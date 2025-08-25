@@ -10,7 +10,7 @@ export default function BlogList() {
     <ul className={classes.blogList}>
       {posts.map((post) => (
         <li key={post.id} className={classes.blogItem}>
-          <Link to={`/blog/${post.id}`} className={classes.blogLink}>
+          <Link to={`/posts/${post.id}`} className={classes.blogLink}>
             <div className={classes.blogMeta}>
               <p className={classes.blogDate}>{new Date(post.createdAt).toLocaleDateString()}</p>
               <ul className={classes.blogCategories}>

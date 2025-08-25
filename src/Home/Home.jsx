@@ -1,11 +1,23 @@
-import {Link,Outlet} from "react-router-dom";
+import {Link} from "react-router-dom";
 import React from 'react';
-import { posts } from './data/post';
 import classes from './Home.module.css';
 import parse from 'html-react-parser';
+import { useEffect, useState } from "react";
 
 
 export default function BlogList() {
+    const [posts, setPosts] = useState([]);
+
+    useEffect(() => {
+    const fetcher = async () => {
+      const res = await fetch("https://1hmfpsvto6.execute-api.ap-northeast-1.amazonaws.com/dev/posts")
+      const data = await res.json()
+      setPosts(data.posts)
+    }
+
+    fetcher()
+  }, [])
+
   return (
     <ul className={classes.blogList}>
       {posts.map((post) => (

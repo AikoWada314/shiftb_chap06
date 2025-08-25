@@ -10,13 +10,18 @@ export default function BlogList() {
 
     useEffect(() => {
     const fetcher = async () => {
+      setIsLoading(true);
       const res = await fetch("https://1hmfpsvto6.execute-api.ap-northeast-1.amazonaws.com/dev/posts")
       const data = await res.json()
       setPosts(data.posts)
+      setIsLoading(false);
     }
 
     fetcher()
   }, [])
+
+    const [isLoading, setIsLoading] = useState(true);
+    if (isLoading) return <div>読み込み中</div>;
 
   return (
     <ul className={classes.blogList}>

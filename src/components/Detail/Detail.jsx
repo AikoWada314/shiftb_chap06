@@ -1,14 +1,31 @@
 import { useParams } from "react-router-dom";
 import React from 'react';
-import { posts } from '../../Home/data/post';
 import classes from './Detail.module.css';
 import parse from 'html-react-parser';
+import { useEffect, useState } from "react";
+
 
 export default function Detail() {
   const { id } = useParams();
-  console.log(id);
-  const post = posts.find((p) => String(p.id) === id);
+  const [post, setPost] = useState(null);
+  const [isLoading, setIsLoading] = useState(true);
+
+  useEffect(() => {
+    const fetcher = async () => {
+      setIsLoading(true);
+      const res = await fetch(`https://1hmfpsvto6.execute-api.ap-northeast-1.amazonaws.com/dev/posts/${id}`);
+      const { post } = await res.json();
+      setPost(post);
+      setIsLoading(false);
+    };
+    fetcher();
+  }, [id]);
+
+  if (isLoading) return <div>読み込み中</div>;
   if (!post) return <div>記事が見つかりません</div>;
+
+
+
   return (
     <div className={classes.detailBody}>
       <div className={classes.detailThumbnail}>

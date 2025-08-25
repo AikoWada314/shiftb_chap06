@@ -5,7 +5,7 @@ import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 import { BrowserRouter } from "react-router-dom";
 import Header from "./components/Header/Header";
-import Home from "./Home/Home";
+import Home from "./components/Home/Home";
 import Detail from "./components/Detail/Detail";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));

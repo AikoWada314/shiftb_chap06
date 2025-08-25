@@ -24,7 +24,7 @@ export default function Detail() {
           </ul>
         </div>
         <h1 className={classes.detailTitle}>{post.title}</h1>
-          <p className={classes.detailExcerpt}>{parse(post.content)}</p>
+          <div className={classes.detailExcerpt}>{parse(post.content)}</div>
       </div>
     </div>
   );

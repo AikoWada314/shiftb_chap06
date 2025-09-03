@@ -7,6 +7,9 @@ import { BrowserRouter } from "react-router-dom";
 import Header from "./components/Header/Header";
 import Home from "./components/Home/Home";
 import Detail from "./components/Detail/Detail";
+import Contact from "./components/Contact/Contact";
+import "./index.css";
+
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
